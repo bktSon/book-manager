@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
         req.socket.remoteAddress ||
         (req.connection.socket ? req.connection.socket.remoteAddress : null);
     // console.log(ip);
-    res.send('Ip address', ip);
+    res.send('Ip address: ' + ip);
 });
 
 app.get('/books', (req, res) => {
