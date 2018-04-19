@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
         req.connection.remoteAddress ||
         req.socket.remoteAddress ||
         (req.connection.socket ? req.connection.socket.remoteAddress : null);
-    // console.log(ip);
+    console.log(ip);
     res.send('Ip address: ' + ip);
 });
 
