@@ -23,6 +23,10 @@ app.get('/',  (req, res) => {
     res.send('hello world');
 });
 
+app.get('/haha', (req, res) => {
+    res.send('now you see me !')
+})
+
 app.use(function (err, req, res, next) {
     if(err) {
         console.log(err);
