@@ -1,18 +1,18 @@
-import config from '../../config';
-const MongoClient = require('mongodb').MongoClient;
+import config from '../../../config/index';
+import {MongoClient} from 'mongodb';
 
-module.exports  = function (req, res, next) {
+export default function (req, res, next) {
     MongoClient.connect(config.mongo.url, function (err, client) {
     
         /**
          * If err throw err message
          */
         if(err) {
+            console.log(err);
             throw err;
         }
         
-        // req.app.connection = client.db();
         req.app.set('connection', client.db());
         next();
-    })
-};
+    });
+}

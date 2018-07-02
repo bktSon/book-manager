@@ -1,8 +1,5 @@
 export default new class UserController {
     findAll(req, res) {
-        // UserService.findAll().then((users) => {
-        //     res.send(users);
-        // });
         res.send('hello world');
     }
     
@@ -16,10 +13,10 @@ export default new class UserController {
     
     delete(req, res) {
         const id = req.params.id;
-        if(id == '1') {
+        if(id === '1') {
             // throw new ApError({code: 'E1022', message: 'Some thing broken'})
-            throw ({code: 'E1022', message: 'Some thing broken'})
+            throw ({code: 'E1022', message: 'Some thing broken'});
         }
         res.send('delete success');
     }
-}
+};

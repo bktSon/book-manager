@@ -1,7 +1,6 @@
-let UsersRepository = require('./users.repository');
+import UsersRepository from './users.repository';
 
-module.export = function (app) {
+export default function (app) {
     let usersRepository = new UsersRepository(app.get('connection'));
     app.set('userRepository', usersRepository);
-    resolve(app)
-};
+}

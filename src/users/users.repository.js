@@ -3,9 +3,7 @@ export default new class UserRepository {
         this.connection = connection;
     }
     
-    findById(id) {
-        // return this.connection.
-        
+    findById() {
         return 11;
     }
-}
+};

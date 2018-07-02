@@ -1,10 +1,10 @@
 'use strict';
 import express from 'express';
-import {router} from './shared/router';
-import connection from './shared/provider/mongodb.provider';
+// import {router} from './src/shared/router';
+import connection from './src/shared/provider/mongodb.provider';
 const app = express();
 
-app.use(router);
+// app.use(router);
 app.use(connection);
 
 // app.get('/', (req, res) => {
@@ -23,17 +23,17 @@ app.get('/',  (req, res) => {
     res.send('hello world');
 });
 
-app.get('/haha', (req, res) => {
-    res.send('now you see me !')
-})
+app.get('/1', (req, res) => {
+    res.send('now you see me !');
+});
 
 app.use(function (err, req, res, next) {
     if(err) {
         console.log(err);
-        err.message = (err.message) ? (err.message) : "OOps something wrong !";
+        err.message = (err.message) ? (err.message) : 'OOps something wrong !';
         err.status = (err.status) ? (err.status) : 'failed';
         err.code = (err.code) ? (err.code) : 400;
-        res.send(err)
+        res.send(err);
     } else {
         res.status(500).send({code: 500, message: 'Something broke!'});
     }
