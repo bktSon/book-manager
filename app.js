@@ -2,8 +2,8 @@
 import express from 'express';
 import {router} from './src/shared/router';
 import connection from './src/shared/provider/mongodb.provider';
+import responseFormatMiddleWare from './src/shared/middleware/app/response-format.middleware';
 import bodyParser from 'body-parser';
-import user from './src/elementary/users/user';
 const app = express();
 
 // parse application/x-www-form-urlencoded
@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 app.use(connection);
+app.use(responseFormatMiddleWare);
 app.use(router);
 
 // app.get('/', (req, res) => {
@@ -25,46 +26,13 @@ app.use(router);
 // });
 
 //
-app.use((req, res, next) => {
-    next();
-});
 
 app.get('/models', (req, res) => {
-    user.create({name: '1231',age: '13', email: 'sonbkt@gmail.com'}).then((rs) => {
-        
-        console.log(rs);
-    });
-   
-    // mongo().then(async (connection) => {
-    //     let Tank = connection.model('Tank', { name: 'string', size: 'string' });
-    //     let tank = new Tank({name: 'sonbkt', size: '123'});
-    //     let a = await tank.save();
-    //     console.log(a);
-    // });
-    
-    
-    
-    // let Tank = mongo().model('Tank', { name: 'string', size: 'string' });
-    
-    // console.log(Tank);
-    res.send('hello asdsaworld');
-    //     let Tank = connection.model('Tank', { name: 'string', size: 'string' });
-    //
-    //     console.log(Tank);
-    //
-    //     res.send('hello world');
-    //     // let tank = new Tank({name: 'sonbkt', size: '123'});
-    //     //
-    //     // tank.save().then((rs) => {
-    //     //     res.send(rs);
-    //     // });
-    // });
+    res.send('111');
 });
 
 app.get('/',  (req, res) => {
-    // let a = req.app.get('connection').collection('createIndexExample1').find({}).toArray();
-    // console.log(a);
-    res.send('hello world');
+    res.json({message: 'hello world'});
 });
 
 app.get('/1', (req, res) => {
