@@ -10,6 +10,7 @@ userRouter.route('/')
 ;
 
 userRouter.route('/:id')
+    .get(UserController.findById)
     .put(UserController.update)
     .delete(UserController.delete)
 ;

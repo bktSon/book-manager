@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import assert from 'assert';
-import config from '../../config/index';
+import config from '../../../config/index';
 
 const Schema = mongoose.Schema;
 
@@ -11,7 +11,7 @@ const testSchema = new Schema({
 
 const Person = mongoose.model('persons', testSchema);
 
-describe('Test CRUD with mongodb without err', () => {
+describe('CRUD CONNECTION MONGODB', () => {
     before((done) => {
         mongoose.connect(config.mongo.url, config.mongo.options);
         

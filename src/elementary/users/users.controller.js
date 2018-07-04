@@ -1,14 +1,26 @@
 import UserRepository from './users.repository';
 
 export default new class UserController {
-    findAll(req, res) {
-        UserRepository.findAll().then(rs => res.send(rs));
-    }
     
     create(req, res) {
         const user = req.body;
         UserRepository.create(user)
-            .then(rs => res.send(rs))
+            .then(rs => res.sendJson(rs))
+            .catch(err => res.send(err))
+        ;
+    }
+    
+    findAll(req, res) {
+        UserRepository.findAll()
+            .then(rs => res.sendJson(rs))
+            .catch(err => res.send(err))
+        ;
+    }
+    
+    findById(req, res) {
+        let userId = req.params.id;
+        UserRepository.findById(userId)
+            .then(rs => res.sendJson(rs))
             .catch(err => res.send(err))
         ;
     }

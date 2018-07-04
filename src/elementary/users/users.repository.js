@@ -2,7 +2,8 @@ import User from './user';
 
 export default new class UserRepository {
     constructor() {
-        this.connection = User;
+        // this.connection = User;
+        this.models = User;
     }
     
     /**
@@ -10,7 +11,7 @@ export default new class UserRepository {
      * @return {user}
      */
     create(user) {
-        return this.connection.create(user);
+        return this.models.create(user);
     }
     
     /**
@@ -18,6 +19,14 @@ export default new class UserRepository {
      * @return {Query|Promise|*}
      */
     findAll() {
-        return this.connection.find({});
+        return this.models.find({});
+    }
+    /**
+     *
+     * @param id
+     * @return {*}
+     */
+    findById(id) {
+        return this.models.findById(id);
     }
 }
