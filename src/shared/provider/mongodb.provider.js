@@ -1,18 +1,17 @@
 import config from '../../../config/index';
-import {MongoClient} from 'mongodb';
+import mongoose from 'mongoose';
 
 export default function (req, res, next) {
-    MongoClient.connect(config.mongo.url, function (err, client) {
-    
-        /**
-         * If err throw err message
-         */
-        if(err) {
-            console.log(err);
-            throw err;
-        }
-        
-        req.app.set('connection', client.db());
-        next();
+    return new Promise((resolve, reject) => {
+        mongoose.connect(config.mongo.url, config.mongo.options, (err, connection) => {
+            if(err) {
+                console.log(err);
+                reject(err);
+            }
+            mongoose.connection = connection;
+            req.connection = connection;
+            resolve(mongoose);
+            next();
+        });
     });
 }

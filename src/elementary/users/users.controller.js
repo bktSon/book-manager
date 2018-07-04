@@ -1,10 +1,16 @@
+import UserRepository from './users.repository';
+
 export default new class UserController {
     findAll(req, res) {
-        res.send('hello world');
+        UserRepository.findAll().then(rs => res.send(rs));
     }
     
     create(req, res) {
-        res.send('create success');
+        const user = req.body;
+        UserRepository.create(user)
+            .then(rs => res.send(rs))
+            .catch(err => res.send(err))
+        ;
     }
     
     update(req, res) {

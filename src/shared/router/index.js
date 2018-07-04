@@ -1,7 +1,7 @@
-// import express from 'express';
-// import {userRouter} from '../../users/users.router';
+import express from 'express';
+import {userRouter} from '../../elementary/users/users.router';
 
-// export const router = express.Router();
+export const router = express.Router();
 
-// router.use('/users', userRouter);
+router.use('/users', userRouter);
 
